@@ -7,15 +7,34 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+
     <link rel="stylesheet" href="style.css">
 
     <title>FortQuest</title>
   </head>
   <body>
-    <div id="mapContainer" class="container-md p-3">
-        <img id="map" src="map.png" class="shadow-lg rounded mx-auto d-block"></img>
+    <div id="rootContainer" class="d-md-flex p-3 justify-content-center">
+      <div id="mapContainer" class="d-inline-flex position-relative ">
+          <img id="map" src="map.png" class="shadow-lg rounded mx-auto d-block"></img>
+          <div id="rollButton" class="frtnButtonWrapper">
+            <div class="frtnButton">
+              ROLL
+            </div>
+          </div>
+          <div id="target">
+            <!--<i class="fa-solid fa-bullseye"></i>-->
+          </div>
+      </div>
     </div>
 
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
