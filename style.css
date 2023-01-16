@@ -1,0 +1,9 @@
+body {
+    background: rgb(150,150,150)
+}
+
+#map {
+    background-color: rgb(59,81,111);
+    max-width: 600px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.4);
+}
