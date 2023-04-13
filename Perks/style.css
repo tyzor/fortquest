@@ -9,6 +9,16 @@ body {
     box-sizing:border-box;
 }
 
+/* Fix for phone screens */
+
+@media only screen and (max-width: 600px) {
+    #rootContainer {
+        transform: scale(.7);
+        transform-origin: 50% 0;
+    }
+}
+
+
 #rootContainer {
     position: absolute;
     top: 0;
@@ -182,6 +192,8 @@ body {
     background: white;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
     padding: 0 1rem 0 1rem;
+    position: absolute;
+    top: 120px;
 }
 
 #rulesContainer .tabHeader {
