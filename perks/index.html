@@ -45,15 +45,15 @@
                     <div class="perkDetails">
                         <span class="perkTitle">Scavenger</span>
                         <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">You may call "DIBS" on any item. Refusal exempts a player from MVP selection.</span>
+                        <span class="perkDescription">You may call "DIBS" on any item or have a player or have another player upgrade a weapon for you. Refusal exempts a player from MVP selection.</span>
                     </div>
                 </div>
                 <div class="perkRow level2">
                     <div class="perkIcon scavenger"></div>
                     <div class="perkDetails">
                         <span class="perkTitle">Scavenger Level 2</span>
-                        <span class="perkUseInfo">Once per game</span>
-                        <span class="perkDescription">You may call "DIBS" on any item. Refusal exempts a player from MVP selection.</span>
+                        <span class="perkUseInfo">Once per player per night</span>
+                        <span class="perkDescription">You may call "DIBS" on any item or have a player or have another player upgrade a weapon for you. Refusal exempts a player from MVP selection.</span>
                     </div>
                 </div>
                 <div class="perkTierHeading">Tier 2</div>
@@ -62,7 +62,7 @@
                     <div class="perkDetails">
                         <span class="perkTitle">Reaper</span>
                         <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">12</span> team eliminations. Maximum of <span class="perkHighlight">3</span> points per night. </span>
+                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">15</span> team eliminations.</span>
                     </div>
                 </div>
                 <div class="perkRow level2">
@@ -70,9 +70,10 @@
                     <div class="perkDetails">
                         <span class="perkTitle">Reaper Level 2</span>
                         <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> points for every <span class="perkHighlight">8</span> team eliminations. Maximum of <span class="perkHighlight">3</span> points per night. </span>
+                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> points for every <span class="perkHighlight">10</span> team eliminations.</span>
                     </div>
                 </div>
+                <!--
                 <div class="perkRow">
                     <div class="perkIcon fivefinger"></div>
                     <div class="perkDetails">
@@ -89,6 +90,7 @@
                         <span class="perkDescription">You may request another player to upgrade or purchase a weapon for you with their gold. Refusal exempts a player from MVP selection.</span>
                     </div>
                 </div>
+            -->
             </div>
             
             <div class="perkTreeRootContainer" data-tab="muckTree">
@@ -141,17 +143,17 @@
                 <div class="perkRow">
                     <div class="perkIcon veto"></div>
                     <div class="perkDetails">
-                        <span class="perkTitle">Veto</span>
+                        <span class="perkTitle">Props</span>
                         <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">You may block a player from being selected as MVP</span>
+                        <span class="perkDescription">Before MVP selection you may secretly nominate a player.  If they are selected as MVP, you receive 1 point.</span>
                     </div>
                 </div>
                 <div class="perkRow level2">
                     <div class="perkIcon veto"></div>
                     <div class="perkDetails">
-                        <span class="perkTitle">Veto</span>
+                        <span class="perkTitle">Props</span>
                         <span class="perkUseInfo">Twice per night</span>
-                        <span class="perkDescription">You may block a player from being selected as MVP (may not block the same player twice)</span>
+                        <span class="perkDescription">Before MVP selection you may secretly nominate a player.  If they are selected as MVP, you receive 1 point.</span>
                     </div>
                 </div>
                 <div class="perkTierHeading">Tier 2</div>
@@ -160,7 +162,7 @@
                     <div class="perkDetails">
                         <span class="perkTitle">Runner</span>
                         <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">6</span>km traveled in a game.  Maximum of <span class="perkHighlight">3</span> points per night. </span>
+                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">6</span>km traveled in a game.</span>
                     </div>
                 </div>
                 <div class="perkRow level2">
@@ -168,7 +170,7 @@
                     <div class="perkDetails">
                         <span class="perkTitle">Runner Level 2</span>
                         <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">3</span>km traveled in a game. Maximum of <span class="perkHighlight">3</span> points per night. </span>
+                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">3</span>km traveled in a game.</span>
                     </div>
                 </div>
                 <div class="perkRow">
@@ -241,8 +243,9 @@
                     <li>A 2nd, 3rd or 4th place finish will award  <span class="ruleHighlight">2 points</span> to the leader</li>
                     <li>A finish from 5th - 10th will award <span class="ruleHighlight">1 point</span> to the leader</li>
                     <li>Anything outside 10th place will award <span class="ruleHighlight">0 points</span> </li>
-                    <li>The leading player must assign an MVP point at the end of each game regardless of outcome</li>
+                    <li>The leading player must assign an MVP point at the end of each game (only for wins)</li>
                     <li>A MVP during a win will receive <span class="ruleHighlight">2 points</span> and must assign a secondary MVP worth <span class="ruleHighlight">1 point</span> </li>
+                    <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
                 </ul>
             </div>
             <div class="tabSection">
@@ -267,8 +270,7 @@
                         </ul>
                     </li>
                     <li>Players may drop anywhere they wish (together or separate)</li>
-                    <li>If another player is revived (either by being picked up or by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
-
+                    <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
 
                 </ul>
             </div>
