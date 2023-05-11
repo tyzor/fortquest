@@ -114,6 +114,7 @@ body {
     min-width: 150px; 
     min-height: 150px;
     background-color: white;
+    background-size: cover;
 }
 .perkIcon.scavenger {
     background-image: url(./img/vulture.svg);
@@ -150,6 +151,15 @@ body {
 }
 .perkIcon.gambler {
     background-image: url(./img/dice-fire.svg);
+}
+.perkIcon.simulacrum {
+    background-image: url(./img/clone.svg);
+}
+.perkIcon.commander {
+    background-image: url(./img/flag.svg);
+}
+.perkIcon.serendipity {
+    background-image: url(./img/coinflip.svg);
 }
 
 .perkDetails {
