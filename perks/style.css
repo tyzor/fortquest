@@ -143,6 +143,9 @@ body {
 .perkIcon.runner {
     background-image: url(./img/wingfoot.svg);
 }
+.perkIcon.damagedealer {
+    background-image: url(./img/winged-sword.svg);
+}
 .perkIcon.colead {
     background-image: url(./img/shadow-follower.svg);
 }
@@ -154,6 +157,9 @@ body {
 }
 .perkIcon.simulacrum {
     background-image: url(./img/clone.svg);
+}
+.perkIcon.armada {
+    background-image: url(./img/bullets.svg);
 }
 .perkIcon.commander {
     background-image: url(./img/flag.svg);
