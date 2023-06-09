@@ -262,6 +262,12 @@ body {
     text-align:center;
 }
 
+#points_iFrame {
+    transform-origin: top;
+    transform: scale(1.5);
+}
+
+
 
 #mapContainer {
     width: 80dvw;
