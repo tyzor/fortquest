@@ -343,7 +343,7 @@ body {
 .pointsChartRow:first-child {
     transform-origin: 50% 0;
     transform: scale(1.5);
-    z-index:2;
+    z-index:3;
 }
 .pointsChartRow:first-child .playerName {
     background-image: linear-gradient(#B78628, #FCC201, #B78628 )
@@ -351,7 +351,7 @@ body {
 .pointsChartRow:nth-child(2) {
     transform-origin: 50% 0;
     transform: scale(1.2) translate(0, 22px);
-    z-index: 1;
+    z-index: 2;
 }
 .pointsChartRow:nth-child(2) .playerName {
     background-image: linear-gradient(#AEB2B8, #D7D7D8, #AEB2B8 )   
@@ -360,6 +360,7 @@ body {
 .pointsChartRow:nth-child(3) {
     transform-origin: 50% 0;
     transform: scale(1) translate(0, 34px);
+    z-index: 1;
 }
 .pointsChartRow:nth-child(3) .playerName {
     background-image: linear-gradient(#6E3A06, #CD7F31, #6E3A06 )   
