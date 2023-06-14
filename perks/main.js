@@ -99,4 +99,16 @@ async function loadPointsSheet(container) {
     })
     container.replaceChildren(pointEl);
 
+    // 4/5th line is team wins
+    let winLabel = pointsLines[4].split(',')[0]
+    let winCount = parseInt(pointsLines[5].split(',')[0])
+
+    let winsEl = document.createElement('div');
+    winsEl.id = 'teamWinsChart';
+    winsEl.innerHTML = `
+        <div class='winsChartLabel'>${winLabel}</div>
+        <div class='winsChartCount'>${winCount}</div>
+    `
+    container.appendChild(winsEl);
+
 }

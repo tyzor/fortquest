@@ -365,3 +365,65 @@ body {
 .pointsChartRow:nth-child(3) .playerName {
     background-image: linear-gradient(#6E3A06, #CD7F31, #6E3A06 )   
 }
+
+#teamWinsChart {
+    margin:40px auto auto auto;
+    width: 500px;
+    height: 500px;
+    font-size: 3.5rem;
+    font-family: 'Luckiest Guy';
+    /*background: white;
+    border: 1px solid black;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    background-image: url('./img/wins-pop.svg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* @keyframes duration | easing-function | delay |
+    iteration-count | direction | fill-mode | play-state | name */
+    /* @keyframes duration | easing-function | delay | name */
+    /*animation: 3s linear 1s slidein;*/
+
+    /*animation: bounceIn 1.5s both 1s;*/
+    animation: 1.5s linear 0.2s both bounceIn, 3s ease-in-out 1.5s infinite pulse;
+}
+
+@keyframes bounceIn {
+    0% {
+      transform: scale(0.1);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.winsChartLabel {
+    color: white;
+    filter: drop-shadow(1px 1px 2px black);
+}
+.winsChartCount {
+    color: lightblue;
+    filter: drop-shadow(1px 1px 2px black);
+}
+
