@@ -298,6 +298,7 @@ body {
 #mapContainer {
     width: 80dvw;
     height: 80dvh;
+    min-width: 800px;
     margin: auto;
     /*background-color: white;*/
     position: absolute;
