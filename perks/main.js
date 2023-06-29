@@ -74,17 +74,23 @@ async function loadPointsSheet(container) {
     // Second line is scores
     let scores = pointsLines[1].split(',');
 
+    // 10th line is number of leads
+    let playerLeads = pointsLines[9].split(',');
+    // 14th line is number of lead wins
+    let playerWins = pointsLines[13].split(',');
+
     // Lets assemble our data
     let playerData = [];
     players.forEach( (player,index) => {
         playerData.push({
             name: player,
-            score: scores[index]
+            score: scores[index],
+            leads: playerLeads[index],
+            wins: playerWins[index]
         })
     })
     // Sort from first to last place
     playerData.sort( (a,b) => b.score-a.score );
-
 
     // Create the element
     let pointEl = document.createElement('div');
@@ -93,7 +99,11 @@ async function loadPointsSheet(container) {
         pointEl.innerHTML += `
             <div class='pointsChartRow'>
                 <div class='playerName'>${player.name}</div>
-                <div class='playerScore'>${player.score}</div>
+                <div class='playerStats'>
+                    <div class='playerScore'>${player.score}</div>
+                    <div class='playerLeads'>${player.leads}</div>
+                    <div class='playerWins'>${player.wins}</div>
+                </div>
             </div>
         `;
     })
@@ -110,5 +120,7 @@ async function loadPointsSheet(container) {
         <div class='winsChartCount'>${winCount}</div>
     `
     container.appendChild(winsEl);
+
+    // 
 
 }

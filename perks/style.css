@@ -329,8 +329,56 @@ body {
     font-size: 1.5rem;
     font-family: 'Luckiest Guy';
 }
-.pointsChartRow > .playerScore {
+
+.pointsChartRow > .playerStats {
     background-color: white;
+    display: flex;
+}
+
+.playerStats > div {
+    flex: 1;
+    position: relative;
+}
+
+.pointsChartRow:first-child .playerStats > div:first-child:after {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    content:'Points';
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+
+.pointsChartRow:first-child .playerStats > div:nth-child(2):after {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    content:'Leads';
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+
+
+.pointsChartRow:first-child .playerStats > div:nth-child(3):after {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    content:'Wins';
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+
+.playerScore {
+    font-size: 1.5rem;
+} 
+.playerLeads {
+    font-size: 1rem;
+}
+.playerWins {
+    font-size: 1rem;
 }
 
 .pointsChartRow .playerName {
