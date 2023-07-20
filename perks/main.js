@@ -11,6 +11,7 @@ document.body.onload = () => {
     })
 
     // perk tree selection
+    /*
     let perkButtons = document.getElementById("perkTreeMenu").querySelectorAll(".button");
     perkButtons.forEach(button => {
         console.log(button);
@@ -18,6 +19,13 @@ document.body.onload = () => {
             onClickPerkTree(el.target.getAttribute("data-tab"));
         };
     })
+    */
+
+    // make rules active
+    let ruleButton = Array.from(buttons).find(button => {
+        return button.dataset.tab == 'rules'
+    });
+    ruleButton.click();
 
     // load points
     loadPointsSheet(document.getElementById("pointsContainer"));

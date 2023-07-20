@@ -10,40 +10,60 @@ body {
 }
 
 /* Fix for phone screens */
+:root {
+    --page-zoom: 1;
+}
 
 @media only screen and (max-width: 800px) {
-    #rootContainer {
+    :root {
+        /*
         transform: scale(.8);
         transform-origin: 50% 0;
+        */
+        font-size: .8rem;
+        --page-zoom: .8;
     }
 }
 @media only screen and (max-width: 700px) {
-    #rootContainer {
+    :root {
+        /*
         transform: scale(.7);
         transform-origin: 50% 0;
+        */
+        font-size: .7rem;
+        --page-zoom: .7;
     }
 }
 @media only screen and (max-width: 600px) {
-    #rootContainer {
+    :root {
+        /*
         transform: scale(.6);
         transform-origin: 50% 0;
+        */
+        font-size: .6rem;
+        --page-zoom: .6;
     }
 }
 @media only screen and (max-width: 500px) {
-    #rootContainer {
+    :root {
+        /*
         transform: scale(.5);
         transform-origin: 50% 0;
+        */
+        font-size: .5rem;
+        --page-zoom: .5;
     }
 }
 @media only screen and (max-width: 400px) {
-    #rootContainer {
+    :root {
+        /*
         transform: scale(.4);
         transform-origin: 50% 0;
+        */
+        font-size: .4rem;
+        --page-zoom: .4;
     }
 }
-
-
-
 
 #rootContainer {
     position: absolute;
@@ -65,12 +85,13 @@ body {
     display:flex;
     flex-direction:row;
     justify-content: center;
-
+    background-color: lightyellow;
 }
+
 #menubar .button {
     padding: 1rem;
     margin: .5rem;
-    min-width: 100px;
+    min-width: calc(100px * var(--page-zoom));
     background-color:white;
     font-family: 'Luckiest Guy';   
     font-size: 2rem;
@@ -89,12 +110,52 @@ body {
     display:none;
 }
 
-#perkTreeContainer {
-    width: 800px;
-    margin: auto;
-    /*background-color: white;*/
+.tabHeader {
+    position: relative;
+    perspective: calc(1000px * var(--page-zoom));
+    text-align:center;
+    text-transform:uppercase;
+    font-family: 'Luckiest Guy';
+    font-size:3rem;
+    margin: 1rem 0 1rem 0;
+    /*border-bottom: 2px solid black;*/
+}
+.tabHeader:before {
     position: absolute;
-    top: 100px;
+    content: '';
+    inset: 0;
+    background-color: lightblue;
+    z-index: -1;
+    transform: skewX(-33deg) rotateX(-31deg) rotateY(3deg);
+    transform-origin: top center;
+}
+.tabHeader:after {
+    position: absolute;
+    content: '';
+    inset: 0;
+    background-color: lightyellow;
+    z-index: -1;
+    transform: skewX(21deg) rotateX(5deg) rotateY(8deg);
+    transform-origin: top center;
+}
+
+.tabSectionHeader {
+    text-transform:uppercase;
+    font-family: 'Luckiest Guy';
+    font-size:1.5rem;
+    margin: 1rem 0 1rem 0;
+}
+
+#perkTreeContainer {
+    width: calc(800px * var(--page-zoom));
+    min-height: 400px;
+    /*
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    padding: 0 1rem 0 1rem;
+    position: absolute;
+    top: calc(120px * var(--page-zoom));
     
 }
 
@@ -241,33 +302,67 @@ body {
 }
 
 #rulesContainer {
-    width: 800px;
+    width: calc(800px * var(--page-zoom));
     min-height: 400px;
+    /*
     background: white;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
     padding: 0 1rem 0 1rem;
     position: absolute;
-    top: 120px;
-}
-
-#rulesContainer .tabHeader {
-    text-align:center;
-    text-transform:uppercase;
-    font-family: 'Luckiest Guy';
-    font-size:3rem;
-    margin: 1rem 0 1rem 0;
-    border-bottom: 2px solid black;
+    top: calc(120px * var(--page-zoom));
 }
 
 #rulesContainer .tabSectionHeader {
     text-transform:uppercase;
     font-family: 'Luckiest Guy';
     font-size:1.5rem;
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+}
+#rulesContainer .tabSectionHeader:after {
+    position: absolute;
+    
+    top: -.5rem;
+    left: -1rem;
+    right: 0;
+    bottom:0;
+    
+
+    transform: skewX(5deg) scale(1.2);
+    transform-origin: top left;
+    
+    z-index: -10;
+    content: ' ';
+    background: lightblue;
+    filter: drop-shadow(1px 1px 2px black);
 }
 
 #rulesContainer .tabSection {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    
+    perspective: calc(1000px * var(--page-zoom));
+    position:relative;
+    padding: 3rem 1rem 1rem 1rem;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Verdana';
+    filter: drop-shadow(1px 1px 2px black);
+}
+#rulesContainer .tabSection:after {
+    position:absolute;
+    inset: 0;
+    content: '';
+    z-index: -20;
+    transform: skewX(-2deg);
+    background: whitesmoke;
+}
+#rulesContainer .tabSection:nth-child(even):after {
+    transform: skewX(2deg);
+    background: red;
+    background: lightyellow;
 }
 
 .ruleHighlight {
@@ -298,11 +393,11 @@ body {
 #mapContainer {
     width: 80dvw;
     height: 80dvh;
-    min-width: 800px;
+    min-width: calc(800px * var(--page-zoom));
     margin: auto;
     /*background-color: white;*/
     position: absolute;
-    top: 120px;
+    top: calc(120px * var(--page-zoom));
     text-align:center;
     background-image: url('./img/fortnitemap.jpg');
     background-position: 50% 0;

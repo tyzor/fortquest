@@ -25,353 +25,47 @@
     <div id="rootContainer">
 
         <div id="menubar">
-            <div class="button active" data-tab="perks">PERKS</div>
             <div class="button" data-tab="rules">RULES</div>
+            <div class="button" data-tab="perks">PERKS</div>
             <div class="button" data-tab="points">POINTS</div>
             <div class="button" data-tab="map">MAP</div>
-        </div>
-
-        <div id="perkTreeContainer" class="tabContainer active" data-tab="perks">
-
-            <div id="perkTreeMenu">
-                <div class="button active" data-tab="scavTree">SCAV</div>
-                <div class="button" data-tab="muckTree">MUCK</div>
-                <div class="button" data-tab="vetoTree">VETO</div>
-                <div class="button" data-tab="fortuneTree">FORTUNE</div>
-            </div>
-
-            <div class="perkTreeRootContainer active" data-tab="scavTree">
-                <div class="perkTierHeading">Tier 1</div>
-                <div class="perkRow">
-                    <div class="perkIcon scavenger"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Scavenger</span>
-                        <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">You may call "DIBS" on any item. Refusal exempts a player from MVP selection.</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon scavenger"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Scavenger Level 2</span>
-                        <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">You may call "DIBS" on any item or have a player upgrade a weapon for you. Refusal exempts a player from MVP selection.</span>
-                    </div>
-                </div>
-                <div class="perkTierHeading">Tier 2</div>
-                <div class="perkRow">
-                    <div class="perkIcon reaper"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Reaper</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">14</span> team eliminations.</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon reaper"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Reaper Level 2</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> points for every <span class="perkHighlight">12</span> team eliminations.</span>
-                    </div>
-                </div>
-                <!--
-                <div class="perkRow">
-                    <div class="perkIcon fivefinger"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Five Finger Discount</span>
-                        <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">You may request another player to upgrade or purchase a weapon for you with their gold. Refusal exempts a player from MVP selection.</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon fivefinger"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Five Finger Discount Level 2</span>
-                        <span class="perkUseInfo">Once per player per night </span>
-                        <span class="perkDescription">You may request another player to upgrade or purchase a weapon for you with their gold. Refusal exempts a player from MVP selection.</span>
-                    </div>  
-                </div>
-            -->
-                <div class="perkTierHeading">Tier 3</div>
-                
-                <div class="perkRow">
-                    <div class="perkIcon armada"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Golden Giver</span>
-                        <span class="perkUseInfo">Once per game</span>
-                        <span class="perkDescription">If during a game, your teammates accept <span class="perkHighlight">2</span> weapons of legendary, heisted or mythic quality. You will receive <span class="perkHighlight">1</span> point at the end of the game.</span>
-                    </div>
-                </div>
-
-                <div class="perkTierHeading">Tier 4</div>
-                <div class="perkRow">
-                    <div class="perkIcon simulacrum"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Simulacrum</span>
-                        <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">You may choose another player (excluding the leader) at the start of a game, your points at the end of the game will be the same as the other player plus <span class="perkHighlight">1</span> point</span>
-                    </div>
-                </div>
-
-                
-
-            </div>
-            
-            <div class="perkTreeRootContainer" data-tab="muckTree">
-                <div class="perkTierHeading">Tier 1</div>
-                <div class="perkRow">
-                    <div class="perkIcon muck"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Muck Insurance</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">Your lead finishes outside <span class="perkHighlight">10th</span> place will award <span class="perkHighlight">1</span> point </span>
-                    </div>
-                </div>
-                <div class="perkTierHeading">Tier 2</div>
-                <div class="perkRow">
-                    <div class="perkIcon photofinish"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Photo Finish</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">When leading, a non-win finish will award you leadership points as if it were <span class="perkHighlight">1</span> place higher</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon photofinish"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Photo Finish Level 2</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">When leading, a non-win finish will award you leadership points as if it were <span class="perkHighlight">2</span> places higher</span>
-                    </div>
-                </div>
-                
-                <!--
-                <div class="perkRow">
-                    <div class="perkIcon medic"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Medic</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for a "Shield Expert Medal" received in a game (250 shields restored).</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon medic"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Medic Level 2</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">2</span> points for a "Shield Expert Medal" received in a game (250 shields restored).</span>
-                    </div>
-                </div>
-                -->
-        
-                <div class="perkTierHeading">Tier 3</div>
-                <div class="perkRow">
-                    <div class="perkIcon commander"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Master Commander</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">When leading, capturing a flag will award <span class="perkHighlight">1</span> point. </span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="perkTreeRootContainer" data-tab="vetoTree">
-                <div class="perkTierHeading">Tier 1</div>
-                <div class="perkRow">
-                    <div class="perkIcon veto"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Props</span>
-                        <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">Before MVP selection you may secretly nominate a player.  If they are selected as MVP, you receive 1 point.</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon veto"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Props</span>
-                        <span class="perkUseInfo">Twice per night</span>
-                        <span class="perkDescription">Before MVP selection you may secretly nominate a player.  If they are selected as MVP, you receive 1 point.</span>
-                    </div>
-                </div>
-                <div class="perkTierHeading">Tier 2</div>
-                <!--
-                <div class="perkRow">
-                    <div class="perkIcon runner"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Runner</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">6</span>km traveled in a game.</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon runner"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Runner Level 2</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">3</span>km traveled in a game.</span>
-                    </div>
-                </div>
-                -->
-                <div class="perkRow">
-                    <div class="perkIcon damagedealer"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Damage Dealer</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">1900</span> damage dealt in a game.</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon damagedealer"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Damage Dealer</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You will receive <span class="perkHighlight">1</span> point for every <span class="perkHighlight">1700</span> damage dealt in a game.</span>
-                    </div>
-                </div>
-                <div class="perkTierHeading">Tier 3</div>
-                <div class="perkRow">
-                    <div class="perkIcon colead"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Co-lead</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">On your leads, you may select another player to lead for you. Both players receive points as a leader and are exempt from MVP selections.  You will additionally receive <span class="perkHighlight">1</span> bonus point</span>
-                    </div>
-                </div>
-
-                <div class="perkTierHeading">Tier 4</div>
-                <div class="perkRow">
-                    <div class="perkIcon victor"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Victor</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">Gain <span class="perkHighlight">3</span> points for every team win (even if you aren't leading) </span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="perkTreeRootContainer" data-tab="fortuneTree">
-                <div class="perkTierHeading">Tier 1</div>
-                <div class="perkRow">
-                    <div class="perkIcon fortune"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Fortune's Wheel</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">Gain <span class="perkHighlight">two</span> extra slots on the leadership wheel spins</span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon fortune"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Fortune's Wheel Level 2</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">Gain <span class="perkHighlight">four</span> extra slots on the leadership wheel spins</span>
-                    </div>
-                </div>
-                <div class="perkTierHeading">Tier 2</div>
-                <div class="perkRow">
-                    <div class="perkIcon gambler"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Gambler</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You may announce a gamble game at the start of a match, gain <span class="perkHighlight">2</span> points for a <span class="perkHighlight">top 2</span> finish but lose <span class="perkHighlight">2</span> points for being outside <span class="perkHighlight">top 2</span></span>
-                    </div>
-                </div>
-                <div class="perkRow level2">
-                    <div class="perkIcon gambler"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Gambler Level 2</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You may announce a gamble game at the start of a match, gain <span class="perkHighlight">2</span> points for a <span class="perkHighlight">top 3</span> finish but lose <span class="perkHighlight">2</span> points for being outside  <span class="perkHighlight">top 3</span> </span>
-                    </div>
-                </div>
-                <div class="perkRow level3">
-                    <div class="perkIcon gambler"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Mulligan</span>
-                        <span class="perkUseInfo">Once per night</span>
-                        <span class="perkDescription">During a game (before the last player has been downed). You may announce a mulligan. Any gamble you made will be canceled for that game.</span>
-                    </div>
-                </div>
-
-                
-                <div class="perkTierHeading">Tier 3</div>
-                <div class="perkRow">
-                    <div class="perkIcon revive"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Revivalist</span>
-                        <span class="perkUseInfo">Once per game</span>
-                        <span class="perkDescription">Gain <span class="perkHighlight">1</span> extra point for team revive during a game</span>
-                    </div>
-                </div>
-
-                <!--
-                <div class="perkRow">
-                    <div class="perkIcon serendipity"></div>
-                    <div class="perkDetails">
-                        <span class="perkTitle">Serendipity</span>
-                        <span class="perkUseInfo">Permanent</span>
-                        <span class="perkDescription">You can no longer lose points when gambling.  Successful gambles reward <span class="perkHighlight">1</span> extra point.</span>
-                    </div>
-                </div>
-                -->
-            </div>
-
-            
         </div>
 
         <div id="rulesContainer" class="tabContainer" data-tab="rules">
             <div class="tabHeader">Rules</div>
             <div class="tabSection">
-                <div class="tabSectionHeader">Base Rules</div>
-                <p>Base rules from previous seasons are still in effect as follows:</p>
+                <div class="tabSectionHeader">The Wheel</div>
+                <p>Things are shaking up this season! At the beginning of the night the wheel will have the following structure:</p>
                 <ul>
-                    <li>A win will award  <span class="ruleHighlight">3 points</span> to the leader</li>
-                    <li>A 2nd, 3rd or 4th place finish will award  <span class="ruleHighlight">2 points</span> to the leader</li>
-                    <li>A finish from 5th - 10th will award <span class="ruleHighlight">1 point</span> to the leader</li>
-                    <li>Anything outside 10th place will award <span class="ruleHighlight">0 points</span> </li>
-                    <li>MVP Rules
-                        <ul>
-                            <li>After a game that finished above top 5 a MVP roll will occur. The chance of MVP for the game is as follows:
-                                <ul>
-                                    <li>First - 100%</li>
-                                    <li>2nd - 80%</li>
-                                    <li>3rd - 60%</li>
-                                    <li>4th - 40%</li>
-                                    <li>5th - 20%</li>
-                                </ul>
-                            </li>
-                            <li>Players will all submit MVP votes silently to the leader of the game.  Once all players have voted the result will be calculated as follows:
-                                <ul>
-                                    <li>If all players received a vote no players will receive points (wash)</li>
-                                    <li>If 2 players tied for most votes they will each receive <span class="ruleHighlight">1 point</span> </li>
-                                    <li>If 1 player received the most votes they will receive <span class="ruleHighlight">2 points</span> </li>
-                                </ul>
-                            </li>
-                            <li>Any players (excluding the leader and MVP) that voted for the MVP will receive  <span class="ruleHighlight">1 point</span> for predicting correctly </li>
-                        </ul>
-                    </li>
-                    
-                    <!--<li>The leading player must assign an MVP point at the end of each game (only for wins)</li>
-                    <li>A MVP during a win will receive <span class="ruleHighlight">2 points</span> and must assign a secondary MVP worth <span class="ruleHighlight">1 point</span> </li>-->
+                    <li>One slot for each player (Standard Lead)</li>
+                    <li>One slot for Free for All - Last Man Standing</li>
+                    <li>One slot for Free for All - Kill Spree</li>
+                </ul>
+                <p>Wheel will carry it's state over to future nights and is only reloaded when every slot has been removed.</p>
+            </div>
+
+            <div class="tabSection">
+                <div class="tabSectionHeader">Global Rules</div>
+                <p>The following are in effect for all game modes</p>
+                <ul>
                     <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
                 </ul>
             </div>
+
             <div class="tabSection">
-                <div class="tabSectionHeader">Perks</div>
+                <div class="tabSectionHeader">Standard Lead</div>
+                <p>At the end of a standard lead points are awarded:</p>
                 <ul>
-                    <li>Players will receive <span class="rhPerk">1 perk point</span> at the start of the season <br> (choose wisely!)</li>
-                    <li>Players will receive add additional perk point when team wins hit <span class="rhPerk">3 / 5 / 7 / 10 / 15 / 20</span></li>
-                    <li>Player will receive <span class="rhPerk">1 respec point</span> for every win the team earns during the season</li>
-                    <!--<li>Players will receive <span class="rhPerk">1 respec point</span> for every  <span class="ruleHighlight">10 points</span> they earn in a season</li>-->
-                    <li>Perks may only be selected and changed at the beginning of a play night</li>
+                    <li><span class="ruleHighlight">1 point</span> for at least one flag capture or 4 team kills</li>
+                    <li><span class="ruleHighlight">2 points</span> for a top 12 finish and least 2 flag captures or 8 team kills</li>
+                    <li><span class="ruleHighlight">3 points</span> for a top 5 finish and least 3 flag captures or 12 team kills</li>
+                    <li>Wins award <span class="ruleHighlight">1 point</span> bonus on top of any of the above tiers</li>
                 </ul>
+                <p>MVP votes occur after every standard lead</p>
             </div>
+
             <div class="tabSection">
-                <div class="tabSectionHeader">Last Game</div>
-                <p>The last game of the night will follow special rules according to a theme. For now the only theme will be <b>last man standing</b></p>
+                <div class="tabSectionHeader">FFA - Last Man Standing</div>
                 <ul>
                     <li>Points will be awarded base on how long each player survives
                         <ul>
@@ -382,12 +76,47 @@
                         </ul>
                     </li>
                     <li>Players may drop anywhere they wish (together or separate)</li>
-                    <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
-
                 </ul>
             </div>
 
+            <div class="tabSection">
+                <div class="tabSectionHeader">FFA - Kill Spree</div>
+                <ul>
+                    <li>Points will be awarded base on what team member gets the most kills in a game
+                        <ul>
+                            <li>1st - <span class="ruleHighlight">2 points</span></li>
+                            <li>2nd/3rd -  <span class="ruleHighlight">1 point</span></li>
+                            <li>Lowest kills -  <span class="ruleHighlight">0 points</span></li>
+                        </ul>
+                    </li>
+                    <li>Players may drop anywhere they wish (together or separate). Ties will award the points to both players.</li>
+                </ul>
+            </div>
+
+            <div class="tabSection">
+                <div class="tabSectionHeader">MVP</div>         
+                <p>Players will all submit MVP votes silently to BrenBot.  Once all players have voted the result will be calculated as follows:</p>
+                <ul>
+                    <li>If all players received a vote no players will receive points (wash)</li>
+                    <li>If 2 players tied for most votes they will each receive <span class="ruleHighlight">1 point</span> </li>
+                    <li>If 1 player received the most votes they will receive <span class="ruleHighlight">2 points</span> </li>
+                    <li>Any players (excluding the leader and MVP) that voted for a solo MVP will receive  <span class="ruleHighlight">1 point</span> for predicting correctly </li>
+                </ul>             
+            </div>
+
+            <div class="tabSection">
+                <div class="tabSectionHeader">Perks</div>
+                <p>To be filled! Perks will be bought with season points. Perk buys are permanent this season so choose your path wisely!</p>
+            </div>
+
         </div>  
+
+        <div id="perkTreeContainer" class="tabContainer" data-tab="perks">
+
+            <div class="tabHeader">Perks</div>
+            <div class="tabSectionHeader">Coming Soon...</div>
+            
+        </div>
     
         <div id="pointsContainer" class="tabContainer" data-tab="points">
             <span>Loading...</span>
