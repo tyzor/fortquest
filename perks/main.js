@@ -71,12 +71,12 @@ function onClickPerkTree(id)
 
 // Instead of embedding we can pull sheet data
 async function loadPointsSheet(container) {
-    let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMpwEditt1W2w-wOk9SoqpK_uOZ01ARoO_ATg98hnUk2g2fEKc_JHtaP651S-m_K-9P8nznyqzoS0q/pub?gid=1028857396&single=true&output=csv"
+    //let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMpwEditt1W2w-wOk9SoqpK_uOZ01ARoO_ATg98hnUk2g2fEKc_JHtaP651S-m_K-9P8nznyqzoS0q/pub?gid=1028857396&single=true&output=csv"
+    let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk61PfOFcU4eWhNnJKeAEnOtNpm96p_stpe4er01Wn9Te0FbNXb4a98No4-6O-QsrI8kOu4vO5fRYe/pub?gid=1028857396&single=true&output=csv"
     let response = await fetch(url);
     let pointsText = await response.text();
     // Get an array of each line
     let pointsLines = pointsText.match(/[^\r\n]+/g);
-
     // First line is players
     let players = pointsLines[0].split(',');
     // Second line is scores
