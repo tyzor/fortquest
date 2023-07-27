@@ -119,6 +119,7 @@ body {
     font-size:3rem;
     padding: .5rem 0 .5rem 0;
     margin: 1rem 0 1rem 0;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,.7));    
     /*border-bottom: 2px solid black;*/
 }
 .tabHeader:before {
@@ -156,8 +157,19 @@ body {
     */
     padding: 0 1rem 0 1rem;
     position: absolute;
-    top: calc(120px * var(--page-zoom));
-    
+    top: calc(120px * var(--page-zoom));   
+}
+
+#perkTreeContainer .tabSection {
+    min-height: 10rem;
+    position: relative;
+}
+
+#perkTreeContainer .tabSectionHeader {
+    padding: 1rem;
+    background-color: yellowgreen;
+    display:flex;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.7);
 }
 
 #perkTreeMenu {
@@ -188,13 +200,23 @@ body {
     display:none;
 }
 
+.perkRow {
+    margin: 1rem;
+    margin-top: 2rem;
+    min-height: 10rem;
+    /*background-color: white;*/
+    font-family: 'Luckiest Guy';  
+    position: relative;
+}
 
+/*
 .perkRow {
     display:flex;
     margin: 1rem;
     background-color: white;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
 }
+*/
 
 .perkRow.blue {
     background-color: #284D79;
@@ -208,11 +230,16 @@ body {
 }
 
 .perkIcon {
-    min-width: 150px; 
-    min-height: 150px;
-    background-color: white;
-    background-size: cover;
+    width: 10rem;
+    height: 10rem;
+    position:absolute;
+    top: -.5rem;
+    left: 0;
+    /*transform: skewX(-2deg);*/
+    z-index: 10;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,.7));
 }
+
 .perkIcon.scavenger {
     background-image: url(./img/vulture.svg);
 }
@@ -268,19 +295,49 @@ body {
     background-image: url(./img/coinflip.svg);
 }
 
+.perkRestrict {
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:10;
+    padding: 1rem;
+    background:darkblue;
+    color: white;
+    text-shadow: 1px 1px 8px black;
+    box-shadow: 0 0 5px rgba(0,0,0,.7);
+    border: 1px solid rgba(0,0,0,.2);
+}
+.perkRestrict.first {
+    background-image: linear-gradient(#B78628, #FCC201, #B78628 )
+}
+.perkRestrict.fourth {
+    background-image: linear-gradient(#000, #555, #000 )
+}
+
 .perkDetails {
     display:flex;
     flex-direction: column;
     justify-content: center;
     font-family: 'Luckiest Guy';
-    padding: 1rem;
-    max-width: 75%;
+    margin-left: 10.5rem;
+    padding-bottom: 1rem;   
+    position: relative;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,.7));
+}
+.perkDetails:after {
+    transform: skewX(-5deg);
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5rem;
+    background: white;
+    z-index: -10;
 }
 
 .perkTitle {
-    font-size: 2.5rem;
+    margin-top: 1rem;
+    font-size: 2rem;
     text-transform: uppercase;
-
 }
 .perkDescription{
     font-size: 1rem;
@@ -300,6 +357,26 @@ body {
     background-color: yellowgreen;
     display:flex;
     box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+
+.perkCosts {
+    width: 90%;
+}
+.perkCostRow {
+    display: flex;
+    margin-bottom: .5rem;
+    background: hsl(195, 53%, 60%);
+}
+.perkCostRow:nth-child(even) {
+    background:  hsl(195, 53%, 79%);
+}
+
+.perkCostCol {
+    flex: 1;
+    padding: .5rem;
+}
+.perkCostCol.desc {
+    flex: 2;
 }
 
 #rulesContainer {
@@ -388,8 +465,6 @@ body {
     transform-origin: top;
     transform: scale(1.5);
 }
-
-
 
 #mapContainer {
     width: 80dvw;
