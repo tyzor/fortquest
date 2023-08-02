@@ -294,6 +294,9 @@ body {
 .perkIcon.serendipity {
     background-image: url(./img/coinflip.svg);
 }
+.perkIcon.recordbreak {
+    background-image: url(./img/achievement.svg);
+}
 
 .perkRestrict {
     position:absolute;
