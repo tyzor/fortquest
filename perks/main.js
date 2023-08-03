@@ -117,6 +117,38 @@ async function loadPointsSheet(container) {
     })
     container.replaceChildren(pointEl);
 
+    // Line 18/19 is records
+    let records = []
+    for(let i=0;i<2;i++)
+    {
+        let line = pointsLines[17+i].split(',');
+        records.push({
+            label: line[0],
+            season: line[1],
+            all: line[2]
+        })
+    }
+    let recordsChart = document.createElement('div');
+    recordsChart.id = 'recordsChart';
+    recordsChart.innerHTML = `
+        <div class='recordsChartHeader'>
+            <div class='headerLabel'></div>
+            <div class='headerLabel'>Season</div>
+            <div class='headerLabel'>All-Time</div>
+        </div>
+    `;
+    records.forEach(rec => {
+        let recRow = document.createElement('div');
+        recRow.classList.add('recordChartRow');
+        recRow.innerHTML = `
+            <div class='recordCol rowLabel'>${rec.label}</div>
+            <div class='recordCol'>${rec.season}</div>
+            <div class='recordCol'>${rec.all}</div>
+        `
+        recordsChart.appendChild(recRow);
+    });
+    container.appendChild(recordsChart);
+
     // 4/5th line is team wins
     let winLabel = pointsLines[4].split(',')[0]
     let winCount = parseInt(pointsLines[5].split(',')[0])
@@ -129,6 +161,6 @@ async function loadPointsSheet(container) {
     `
     container.appendChild(winsEl);
 
-    // 
+    
 
 }

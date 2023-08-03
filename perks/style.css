@@ -650,3 +650,34 @@ body {
     filter: drop-shadow(1px 1px 2px black);
 }
 
+#recordsChart {
+    margin-top: 3rem;
+    margin: 3rem 5rem 0rem 5rem;
+    font-family: 'Luckiest Guy';   
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,0.5);
+}
+#recordsChart .recordsChartHeader {
+    display:flex;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+#recordsChart .headerLabel {
+    flex: 1;
+    background: white;
+    padding: .5rem;
+    border-right: 1px solid rgba(0,0,0,0.5);
+}
+#recordsChart .recordChartRow {
+    display:flex;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+
+#recordsChart .recordCol {
+    flex: 1;
+    background: white;
+    padding: .4rem;
+    border-right: 1px solid rgba(0,0,0,0.5);
+}
