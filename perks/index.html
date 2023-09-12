@@ -56,10 +56,28 @@
             </div>
 
             <div class="tabSection">
-                <div class="tabSectionHeader">Global Rules</div>
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">Revives</div>
                 <p>The following are in effect for all game modes</p>
                 <ul>
-                    <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
+                    
+                    <li>There must be at least 2 players alive for revive points to count</li>
+
+                    <li>Reboot Vans
+                        <ul>
+                            <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>Knocks
+                        <ul>
+                            <li>Players that assist in picking up a knocked player (have the lifting animation) will be awarded <span class="ruleHighlight">1 point</span> </li>
+                            <li><i>If multiple players are knocked, those players aren't eligible for revive points until all non-card players are standing</i></li>
+                        </ul>
+                    </li>
+                    
+
+                    
                 </ul>
             </div>
 
@@ -105,14 +123,28 @@
             </div>
 
             <div class="tabSection">
+                <div class="newChange">NEW</div>
                 <div class="tabSectionHeader">MVP</div>         
-                <p>Players will all submit MVP votes silently to BrenBot.  Once all players have voted the result will be calculated as follows:</p>
+                <p>Players will all submit MVP votes silently to BrenBot. Once all players have voted the result will be calculated as follows:</p>
                 <ul>
                     <li>If all players received a vote no players will receive points (wash)</li>
                     <li>If 2 players tied for most votes they will each receive <span class="ruleHighlight">1 point</span> </li>
                     <li>If 1 player received the most votes they will receive <span class="ruleHighlight">2 points</span> </li>
                     <li>Any players (excluding the leader and MVP) that voted for a solo MVP will receive  <span class="ruleHighlight">1 point</span> for predicting correctly </li>
                 </ul>             
+                <p><b><i>Discussions during gameplay are allowed but once the game has ended discussing around the MVP is forbidden.</i></b></p>
+            </div>
+
+            <div class="tabSection">
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">Kudos</div>
+                <p>Leaders will be awarded a Kudos award to give away at the end of a game after a MVP vote.  Kudos awards are intended to benefit players that show strong team support.</p>
+                <ul>
+                    <li>If no MVP vote occur the leader is still given a Kudos award</li>
+                    <li>If no MVP vote occur the leader is still given a Kudos award</li>
+                    <li>A player that is assigned the Kudos award earns <span class="ruleHighlight">1 point</span> </li>
+                    <li>If the leader fails to assign a Kudos award before the next game they lose <span class="ruleHighlight">1 point</span> </li>
+                </ul> 
             </div>
 
             <div class="tabSection">
@@ -235,6 +267,7 @@
                     </div>
                 </div>
 
+                <!-- REMOVED FOR NOW
                 <div class="perkRow">
                     <div class="perkIcon revive"></div>
                     <div class="perkRestrict first">1st Place Only</div>
@@ -256,6 +289,7 @@
                         </div>
                     </div>
                 </div>
+                -->
                 
                 <div class="perkRow">
                     <div class="perkIcon recordbreak"></div>
@@ -282,6 +316,51 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="perkRow">
+                    <div class="newChange">NEW</div>
+                    <div class="perkIcon limitbreak"></div>
+                    <div class="perkDetails">
+                        <div class="perkTitle">Limit Break</div>
+                        <div class="perkUseInfo">Permanent</div>
+                        <div class="perkDescription">You will earn bonus points for surpassing breakpoints on kills/assists</div>
+                        <div class="perkCosts">
+                            <div class="perkCostRow">
+                                <div class="perkCostCol level">Level 1</div>
+                                <div class="perkCostCol points">5 points</div>
+                                <div class="perkCostCol desc">1 point for breaking 8 kills or 8 assists</div>
+                            </div>
+                            <div class="perkCostRow">
+                                <div class="perkCostCol level">Level 2</div>
+                                <div class="perkCostCol points">5 points</div>
+                                <div class="perkCostCol desc">1 point for breaking 7 kills or 6 assists</div>
+                            </div>
+                            <div class="perkCostRow">
+                                <div class="perkCostCol level">Level 3</div>
+                                <div class="perkCostCol points">5 points</div>
+                                <div class="perkCostCol desc">1 point for breaking 6 kills or 6 assists</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="perkRow">
+                    <div class="newChange">NEW</div>
+                    <div class="perkIcon goldengiver"></div>
+                    <div class="perkDetails">
+                        <div class="perkTitle">Golden Giver</div>
+                        <div class="perkUseInfo">Once per game</div>
+                        <div class="perkDescription">You will earn bonus points for upgrading weapons for teammates</div>
+                        <div class="perkCosts">
+                            <div class="perkCostRow">
+                                <div class="perkCostCol level">Level 1</div>
+                                <div class="perkCostCol points">5 points</div>
+                                <div class="perkCostCol desc">1 point for upgrading a teammate's weapon to legendary quality</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
             <div class="tabSection">

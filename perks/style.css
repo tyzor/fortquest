@@ -209,6 +209,21 @@ body {
     position: relative;
 }
 
+.perkRow .newChange {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    background: rgba(0,150,0,.5);
+    content: 'NEW';
+    color: white;
+    font-family: 'Verdana';
+    font-weight: 800;
+    text-shadow: 1px 1px 8px black;
+    z-index:10;
+}
+
 /*
 .perkRow {
     display:flex;
@@ -296,6 +311,12 @@ body {
 }
 .perkIcon.recordbreak {
     background-image: url(./img/achievement.svg);
+}
+.perkIcon.limitbreak {
+    background-image: url(./img/sword-break.svg);
+}
+.perkIcon.goldengiver {
+    background-image: url(./img/gold-stack.svg);
 }
 
 .perkRestrict {
@@ -444,6 +465,19 @@ body {
     transform: skewX(2deg);
     background: red;
     background: lightyellow;
+}
+
+#rulesContainer .newChange {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    background: rgba(0,150,0,.5);
+    content: 'NEW';
+    color: white;
+    font-weight: 800;
+    text-shadow: 1px 1px 8px black;
 }
 
 .ruleHighlight {
