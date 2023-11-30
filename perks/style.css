@@ -127,9 +127,9 @@ body {
     content: '';
     inset: 0;
     background-color: lightblue;
-    z-index: -1;
-    transform: skewX(-33deg) rotateX(-31deg) rotateY(3deg);
-    transform-origin: top center;
+    z-index: -2;
+    transform: skewX(-22deg) rotateZ(-1deg);
+    transform-origin: center center;
 }
 .tabHeader:after {
     position: absolute;
@@ -137,8 +137,8 @@ body {
     inset: 0;
     background-color: lightyellow;
     z-index: -1;
-    transform: skewX(21deg) rotateX(5deg) rotateY(8deg);
-    transform-origin: top center;
+    transform: skewX(22deg) rotateZ(1deg);
+    transform-origin: center center;
 }
 
 .tabSectionHeader {
@@ -590,7 +590,8 @@ body {
 }
 
 .pointsChartRow .playerName {
-    background-image: linear-gradient(black, #444444,black);
+    background: rgb(0,82,255);
+    background: linear-gradient(rgba(0,82,255,1) 0%, rgba(0,153,255,1) 48%, rgba(0,82,255,1) 100%);
     text-shadow: 1px 1px 8px black;
     color: white;
     border-right: 1px solid black;
