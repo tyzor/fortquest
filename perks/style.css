@@ -490,12 +490,15 @@ body {
 }
 
 #pointsContainer {
-    width: 800px;
-    margin: auto;
-    /*background-color: white;*/
+    width: calc(800px * var(--page-zoom));
+    min-height: 400px;
+    /*
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    padding: 0 1rem 0 1rem;
     position: absolute;
-    top: 120px;
-    text-align:center;
+    top: calc(120px * var(--page-zoom));   
 }
 
 #points_iFrame {
@@ -519,13 +522,12 @@ body {
 }
 
 #playerPointsChart {
-    width: 400px;
-    margin: auto;
+    margin: 1rem;
 }
 .pointsChartRow {
     display: flex;
     position: relative;
-    transform: translate(0, 30px);
+    /*transform: translate(0, 30px);*/
     box-shadow: 2px 2px 5px black;
     border: 1px solid black;
 }
@@ -534,7 +536,7 @@ body {
     padding: 1rem;
     /*background-color: white;*/
 
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'Luckiest Guy';
 }
 
@@ -550,43 +552,43 @@ body {
 
 .pointsChartRow:first-child .playerStats > div:first-child:after {
     position: absolute;
-    top: 20px;
+    top: 2rem;
     left: 0;
     right: 0;
     content:'Points';
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: 1rem;
 }
 
 .pointsChartRow:first-child .playerStats > div:nth-child(2):after {
     position: absolute;
-    top: 20px;
+    top: 2rem;
     left: 0;
     right: 0;
     content:'Leads';
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: 1rem;
 }
 
 
 .pointsChartRow:first-child .playerStats > div:nth-child(3):after {
     position: absolute;
-    top: 20px;
+    top: 2rem;
     left: 0;
     right: 0;
     content:'Wins';
     text-transform: uppercase;
-    font-size: .75rem;
+    font-size: 1rem;
 }
 
 .playerScore {
-    font-size: 1.2rem;
+    font-size: 2rem;
 } 
 .playerLeads {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .playerWins {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .pointsChartRow .playerName {
@@ -598,36 +600,41 @@ body {
 }
 
 /* Styling unique to gold/silver/bronze */
+/*
 .pointsChartRow:first-child {
     transform-origin: 50% 0;
     transform: scale(1.5);
     z-index:3;
 }
+*/
 .pointsChartRow:first-child .playerName {
     background-image: linear-gradient(#B78628, #FCC201, #B78628 )
 }
+/*
 .pointsChartRow:nth-child(2) {
     transform-origin: 50% 0;
     transform: scale(1.2) translate(0, 22px);
     z-index: 2;
 }
+*/
 .pointsChartRow:nth-child(2) .playerName {
     background-image: linear-gradient(#AEB2B8, #D7D7D8, #AEB2B8 )   
 }
-
+/*
 .pointsChartRow:nth-child(3) {
     transform-origin: 50% 0;
     transform: scale(1) translate(0, 34px);
     z-index: 1;
 }
+*/
 .pointsChartRow:nth-child(3) .playerName {
     background-image: linear-gradient(#6E3A06, #CD7F31, #6E3A06 )   
 }
 
 #teamWinsChart {
-    margin:40px auto auto auto;
-    width: 500px;
-    height: 500px;
+    margin:-6rem auto auto auto;
+    width: calc(500px * var(--page-zoom));
+    height: calc(500px * var(--page-zoom));
     font-size: 3.5rem;
     font-family: 'Luckiest Guy';
     /*background: white;
@@ -637,9 +644,11 @@ body {
     background-image: url('./img/wins-pop.svg');
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    background-size: contain;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
 
     /* @keyframes duration | easing-function | delay |
     iteration-count | direction | fill-mode | play-state | name */
