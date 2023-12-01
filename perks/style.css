@@ -530,6 +530,7 @@ body {
     /*transform: translate(0, 30px);*/
     box-shadow: 2px 2px 5px black;
     border: 1px solid black;
+    min-height: 3rem;
 }
 .pointsChartRow > div {
     flex: 1;
@@ -538,6 +539,8 @@ body {
 
     font-size: 2rem;
     font-family: 'Luckiest Guy';
+    text-align: center;
+    min-height: 3.5rem;
 }
 
 .pointsChartRow > .playerStats {
