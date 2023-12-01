@@ -87,6 +87,9 @@ async function loadPointsSheet(container) {
     // 14th line is number of lead wins
     let playerWins = pointsLines[13].split(',');
 
+    // 23rd line is perks
+    let playerPerks = pointsLines[22].split(',');
+    
     // Lets assemble our data
     let playerData = [];
     players.forEach( (player,index) => {
@@ -94,7 +97,8 @@ async function loadPointsSheet(container) {
             name: player,
             score: scores[index],
             leads: playerLeads[index],
-            wins: playerWins[index]
+            wins: playerWins[index],
+            perks: playerPerks[index].split(';')
         })
     })
     // Sort from first to last place
@@ -106,7 +110,7 @@ async function loadPointsSheet(container) {
     playerData.forEach(player => {
         pointEl.innerHTML += `
             <div class='pointsChartRow'>
-                <div class='playerName'>${player.name}</div>
+                <div class='playerName'>${player.name} ${buildPerkIcons(player.perks)}</div>
                 <div class='playerStats'>
                     <div class='playerScore'>${player.score}</div>
                     <div class='playerLeads'>${player.leads}</div>
@@ -159,8 +163,20 @@ async function loadPointsSheet(container) {
         <div class='winsChartLabel'>${winLabel}</div>
         <div class='winsChartCount'>${winCount}</div>
     `
-    container.appendChild(winsEl);
+    container.appendChild(winsEl);   
 
-    
+}
 
+function buildPerkIcons(perks)
+{
+    let html = '';
+    perks.forEach(perk => {
+        if(perk == '')
+            return;
+        let pData = perk.split(' ');
+        let perkName = pData[0].trim().toLowerCase();
+        let perkLvl = Number.parseInt(pData[1]);
+        html += `<div class='perkIcon ${perkName}'><div class='perkLvl'>${perkLvl > 1 ? perkLvl : ''}</div></div>`;
+    })
+    return html;
 }
