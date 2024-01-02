@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <!--
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    -->
     
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,26 +22,147 @@
     <title>FortQuest</title>
   </head>
   <body>
-    <div id="rootContainer" class="d-md-flex p-3 justify-content-center">
-      <div id="mapContainer" class="d-inline-flex position-relative ">
-          <img id="map" src="map.png" class="shadow-lg rounded mx-auto d-block"></img>
-          <div id="rollButton" class="frtnButtonWrapper">
-            <div class="frtnButton">
-              ROLL
-            </div>
-          </div>
-          <div id="target">
-            <!--<i class="fa-solid fa-bullseye"></i>-->
-          </div>
-      </div>
-    </div>
+    <div id="rootContainer">
 
-    
+        <div id="menubar">
+            <div class="button" data-tab="rules">RULES</div>
+            <div class="button" data-tab="points">POINTS</div>
+            <div class="button" data-tab="map">MAP</div>
+        </div>
+
+        <div id="rulesContainer" class="tabContainer" data-tab="rules">
+            <div class="tabHeader">Rules</div>
+            <div class="tabSection">
+                <div class="tabSectionHeader">The Wheel</div>
+                <p>Things are shaking up this season! At the beginning of the night the wheel will have the following structure:</p>
+                <ul>
+                    <li>One slot for each player (Standard Lead)</li>
+                    <li>One slot for 2v2 Spree (Last Place Choice)</li>
+                    <li>One slot for 2v2 Spree (Random Partners)</li>
+                </ul>
+                <p>Wheel will carry it's state over to future nights and is only reloaded when every slot has been removed.</p>
+            </div>
+
+            <div class="tabSection">
+                <div class="tabSectionHeader">Revives</div>
+                <p>The following are in effect for all game modes</p>
+                <ul>
+                    
+                    <li>There must be at least 2 players alive for revive points to count</li>
+
+                    <li>Reboot Vans
+                        <ul>
+                            <li>If another player is rebooted (by a van) all players currently alive are awarded <span class="ruleHighlight">1 point</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>Knocks
+                        <ul>
+                            <li>Players that assist in picking up a knocked player (have the lifting animation) will be awarded <span class="ruleHighlight">1 point</span> </li>
+                            <li><i>If multiple players are knocked, those players aren't eligible for revive points until all non-card players are standing</i></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <div class="tabSection">
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">Standard Lead</div>
+                
+                <p>At the end of a standard lead points are awarded (incentivizing exciting aggressive leads):</p>
+                <ul>
+                    <li>4 kills - <span class="ruleHighlight">1 point</span></li>
+                    <li>8 kills - <span class="ruleHighlight">2 points</span></li>
+                    <li>12 kills - <span class="ruleHighlight">3 points</span></li>
+                    <li>16 kills - <span class="ruleHighlight">4 points</span></li>
+                    <li>Wins award <span class="ruleHighlight">2 points</span> bonus on top of any of the above tiers</li>
+                </ul>
+            </div>
+
+            <div class="tabSection">
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">2v2 Spree</div>
+                <ul>
+                    <li>Teams are either random or picked based on wheel. Points will be awarded base on which team has the most collective kills in a game.
+                        <ul>
+                            <li>1st - <span class="ruleHighlight">2 points</span></li>
+                            <li>Lowest kills -  <span class="ruleHighlight">0 points</span></li>
+                        </ul>
+                    </li>
+                    <li>Resurrection of the opposing team will award points to the players on the opposite team.</li>
+                    <li>Players may drop anywhere they wish (together or separate). Ties will award the first place points to both players.</li>
+                    <li><b>DOUBLE DOWN</b> If all parties agree after team selection the game is worth double points to the winners</li>
+                </ul>
+            </div>
+
+            <div class="tabSection">
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">MVP</div>         
+                <p>MVP votes will occur in any game with one of the following:</p>
+                <ul>
+                    <li>10 Team Kills</li>
+                    <li>Top 5 Finish</li>
+                    <li>Game Length of 15min+</li>
+                </ul> 
+                <p><b><i>Leaders cannot be selected in MVP voting</i></b></p>
+                <p>Players will all submit MVP votes silently to BrenBot. Once all players have voted the result will be calculated as follows:</p>
+                <ul>
+                    <li>If all players received a vote no players will receive points (wash)</li>
+                    <li>If 2 players tied for most votes they will each receive <span class="ruleHighlight">1 point</span> </li>
+                    <li>If 1 player received the most votes they will receive <span class="ruleHighlight">2 points</span> </li>
+                    <li>Any players (excluding the leader and MVP) that voted for a solo MVP will receive  <span class="ruleHighlight">1 point</span> for predicting correctly </li>
+                </ul>             
+                <p><b><i>Discussions during gameplay are allowed but once the game has ended discussing around the MVP is forbidden.</i></b></p>
+            </div>
+
+            <div class="tabSection">
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">Seasonal Records</div>         
+                <p>Records start at 0 for this season, and every time a record is broken it gives the player <span class="ruleHighlight">1 point</span></p>
+                <p><b><i>For the first wheel of the season records will be calculated at the end of the wheel sequence</i></b></p>
+                <p>Records include:</p>
+                <ul>
+                    <li>Team kills (awarded to leader)</li>
+                    <li>Individual kills (awarded to player)</li>
+                    <li>2v2 Team kills (awarded to each player on a team)</li>
+                </ul>   
+            </div>
+
+
+            <div class="tabSection">
+                <div class="newChange">NEW</div>
+                <div class="tabSectionHeader">Prestige Token</div>         
+                <p>Any player voted for MVP in a winning game will receive <span class="ruleHighlight">1 Prestige Token</span></p>
+                <p>Uses include:</p>
+                <ul>
+                    <li>You may pick or override partner choice for 2v2 spree</li>
+                    <li>Can FORCE a 2vs2 Double Down without others agreeing</li>
+                    <li>Can choose to have your lead based on Kills or Placement (instead of Lead vote)</li>
+                </ul>   
+            </div>
+
+
+        </div>  
+
+
+        <div id="pointsContainer" class="tabContainer" data-tab="points">
+            <span>Loading...</span>
+            <!--<iframe id="points_iFrame" style="border:none" width="405" height="117" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSMpwEditt1W2w-wOk9SoqpK_uOZ01ARoO_ATg98hnUk2g2fEKc_JHtaP651S-m_K-9P8nznyqzoS0q/pubhtml?gid=1028857396&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=A:F"></iframe>-->
+        </div>
+
+        <div id="mapContainer" class="tabContainer" data-tab="map">
+            <iframe id="mapIFrame" width="100%" height="100%" src="https://fortniteworld.app/map/"></iframe>
+        </div>
+
+    </div>    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    -->
     <script src="main.js"></script>
   </body>
 </html>

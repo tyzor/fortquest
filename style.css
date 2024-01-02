@@ -1,60 +1,745 @@
+html,body {
+    margin:0;
+    padding:0;
+}
+
 body {
-    background: rgb(150,150,150)
+    background: rgb(150,150,150);
+    min-height: 100vh;
+    box-sizing:border-box;
 }
 
-#map {
-    position:relative;
-    background-color: rgb(59,81,111);
-    max-width: 600px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,.4);
+/* Fix for phone screens */
+:root {
+    --page-zoom: 1;
 }
 
-#rollButton{
-    position:absolute;
-    right: 1rem;
-    bottom: 1rem;
+@media only screen and (max-width: 800px) {
+    :root {
+        /*
+        transform: scale(.8);
+        transform-origin: 50% 0;
+        */
+        font-size: .8rem;
+        --page-zoom: .8;
+    }
+}
+@media only screen and (max-width: 700px) {
+    :root {
+        /*
+        transform: scale(.7);
+        transform-origin: 50% 0;
+        */
+        font-size: .7rem;
+        --page-zoom: .7;
+    }
+}
+@media only screen and (max-width: 600px) {
+    :root {
+        /*
+        transform: scale(.6);
+        transform-origin: 50% 0;
+        */
+        font-size: .6rem;
+        --page-zoom: .6;
+    }
+}
+@media only screen and (max-width: 500px) {
+    :root {
+        /*
+        transform: scale(.5);
+        transform-origin: 50% 0;
+        */
+        font-size: .5rem;
+        --page-zoom: .5;
+    }
+}
+@media only screen and (max-width: 400px) {
+    :root {
+        /*
+        transform: scale(.4);
+        transform-origin: 50% 0;
+        */
+        font-size: .4rem;
+        --page-zoom: .4;
+    }
 }
 
-.frtnButtonWrapper {
-    display: inline-block;
-    padding:5px;
-    background:rgba(0,0,0,0);
-    border-radius: 5px;
-    user-select: none;
+#rootContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.frtnButtonWrapper:hover {
-    box-shadow: 0 0 0 5px rgba(255,255,255,0.6);
+
+#menubar {
+    position: absolute;
+    top:1rem;
+    right:0;
+    left:0;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    background-color: lightyellow;
 }
-.frtnButton {
-    background: #f3af19;
+
+#menubar .button {
+    padding: 1rem;
+    margin: .5rem;
+    min-width: calc(100px * var(--page-zoom));
+    background-color:white;
+    font-family: 'Luckiest Guy';   
+    font-size: 2rem;
+    text-transform: uppercase;   
+    text-align:center;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+#menubar .button:hover {
+    transform: scale(1.2);
+}
+#menubar .button.active {
+    background-color:lightblue;
+}
+
+.tabContainer:not(.active) {
+    display:none;
+}
+
+.tabHeader {
+    position: relative;
+    perspective: calc(1000px * var(--page-zoom));
+    text-align:center;
+    text-transform:uppercase;
     font-family: 'Luckiest Guy';
-    font-size: 2.5rem;
-    padding: .5rem 2rem .2rem 2rem;
+    font-size:3rem;
+    padding: .5rem 0 .5rem 0;
+    margin: 1rem 0 1rem 0;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,.7));    
+    /*border-bottom: 2px solid black;*/
+}
+.tabHeader:before {
+    position: absolute;
+    content: '';
+    inset: 0;
+    background-color: lightblue;
+    z-index: -2;
+    transform: skewX(-22deg) rotateZ(-1deg);
+    transform-origin: center center;
+}
+.tabHeader:after {
+    position: absolute;
+    content: '';
+    inset: 0;
+    background-color: lightyellow;
+    z-index: -1;
+    transform: skewX(22deg) rotateZ(1deg);
+    transform-origin: center center;
 }
 
-.frtnButtonWrapper:hover .frtnButton {
-    background: #ffffff;
+.tabSectionHeader {
+    text-transform:uppercase;
+    font-family: 'Luckiest Guy';
+    font-size:1.5rem;
+    margin: 1rem 0 1rem 0;
 }
 
-.frtnButtonWrapper:active {
-    transform: scale(0.95)
+#perkTreeContainer {
+    width: calc(800px * var(--page-zoom));
+    min-height: 400px;
+    /*
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    padding: 0 1rem 0 1rem;
+    position: absolute;
+    top: calc(120px * var(--page-zoom));   
 }
 
-#target {
+#perkTreeContainer .tabSection {
+    min-height: 10rem;
+    position: relative;
+}
+
+#perkTreeContainer .tabSectionHeader {
+    padding: 1rem;
+    background-color: yellowgreen;
+    display:flex;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+}
+
+#perkTreeMenu {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:1rem;
+}
+#perkTreeMenu .button {
+    padding: 1rem;
+    margin: .5rem;
+    min-width: 100px;
+    background-color:white;
+    font-family: 'Luckiest Guy';   
+    font-size: 1rem;
+    text-transform: uppercase;   
+    text-align:center;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+#perkTreeMenu .button:hover {
+    transform: scale(1.2);
+}
+#perkTreeMenu .button.active {
+    background-color:lightblue;
+}
+
+.perkTreeRootContainer:not(.active) {
+    display:none;
+}
+
+.perkRow {
+    margin: 1rem;
+    margin-top: 2rem;
+    min-height: 10rem;
+    /*background-color: white;*/
+    font-family: 'Luckiest Guy';  
+    position: relative;
+}
+
+.perkRow .newChange {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    background: rgba(0,150,0,.5);
+    content: 'NEW';
+    color: white;
+    font-family: 'Verdana';
+    font-weight: 800;
+    text-shadow: 1px 1px 8px black;
+    z-index:10;
+}
+
+/*
+.perkRow {
+    display:flex;
+    margin: 1rem;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+*/
+
+.perkRow.blue {
+    background-color: #284D79;
+}
+
+.perkRow.level2 {
+    transform: scale(.9) translate(36px,-10px);
+}
+.perkRow.level3 {
+    transform: scale(.8) translate(88px,-32px);
+}
+
+.perkIcon {
+    width: 10rem;
+    height: 10rem;
     position:absolute;
-    width:4rem;
-    height:4rem;
-    background-image: url(./bullseye.svg);
-    background-size: cover;
-    opacity: 0.7;
-    border-radius: 4rem;
+    top: -.5rem;
+    left: 0;
+    /*transform: skewX(-2deg);*/
+    z-index: 10;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,.7));
 }
-#target:before {
+
+.perkIcon.scavenger {
+    background-image: url(./img/vulture.svg);
+}
+.perkIcon.muck {
+    background-image: url(./img/arrowed.svg);
+}
+.perkIcon.veto {
+    background-image: url(./img/vote.svg);
+}
+.perkIcon.fortune {
+    background-image: url(./img/gold-stack.svg);
+}
+.perkIcon.reaper {
+    background-image: url(./img/reaper-scythe.svg);
+}
+.perkIcon.fivefinger {
+    background-image: url(./img/snatch.svg);
+}
+.perkIcon.photofinish {
+    background-image: url(./img/photo-camera.svg);
+}
+.perkIcon.medic {
+    background-image: url(./img/healing.svg);
+}
+.perkIcon.runner {
+    background-image: url(./img/wingfoot.svg);
+}
+.perkIcon.damagedealer {
+    background-image: url(./img/winged-sword.svg);
+}
+.perkIcon.colead {
+    background-image: url(./img/shadow-follower.svg);
+}
+.perkIcon.revive {
+    background-image: url(./img/revive.svg);
+}
+.perkIcon.victor {
+    background-image: url(./img/crown.svg);
+}
+.perkIcon.gambler {
+    background-image: url(./img/dice-fire.svg);
+}
+.perkIcon.simulacrum {
+    background-image: url(./img/clone.svg);
+}
+.perkIcon.armada {
+    background-image: url(./img/bullets.svg);
+}
+.perkIcon.commander {
+    background-image: url(./img/flag.svg);
+}
+.perkIcon.serendipity {
+    background-image: url(./img/coinflip.svg);
+}
+.perkIcon.recordbreak {
+    background-image: url(./img/achievement.svg);
+}
+.perkIcon.limitbreak {
+    background-image: url(./img/sword-break.svg);
+}
+.perkIcon.goldengiver {
+    background-image: url(./img/gold-stack.svg);
+}
+
+.perkRestrict {
     position:absolute;
-    content:'';
-    width:100%;
-    height:100%;
-    border-radius:4rem;
-    box-shadow: 0 0 10px 10px rgba(255,255,255,.5);
-    transform:scale(.9)
+    top:0;
+    right:0;
+    z-index:10;
+    padding: 1rem;
+    background:darkblue;
+    color: white;
+    text-shadow: 1px 1px 8px black;
+    box-shadow: 0 0 5px rgba(0,0,0,.7);
+    border: 1px solid rgba(0,0,0,.2);
+}
+.perkRestrict.first {
+    background-image: linear-gradient(#B78628, #FCC201, #B78628 )
+}
+.perkRestrict.fourth {
+    background-image: linear-gradient(#000, #555, #000 )
+}
+
+.perkDetails {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Luckiest Guy';
+    margin-left: 10.5rem;
+    padding-bottom: 1rem;   
+    position: relative;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,.7));
+}
+.perkDetails:after {
+    transform: skewX(-5deg);
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5rem;
+    background: white;
+    z-index: -10;
+}
+
+.perkTitle {
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+.perkDescription{
+    font-size: 1rem;
+}
+.perkUseInfo {
+    color: darkcyan;
+}
+.perkHighlight {
+    color: darkcyan;
+    font-size:1.2rem;
+}
+
+.perkTierHeading {
+    font-family: 'Luckiest Guy';
+    text-transform: uppercase;
+    padding: 1rem;
+    background-color: yellowgreen;
+    display:flex;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+
+.perkCosts {
+    width: 90%;
+}
+.perkCostRow {
+    display: flex;
+    margin-bottom: .5rem;
+    background: hsl(195, 53%, 60%);
+}
+.perkCostRow:nth-child(even) {
+    background:  hsl(195, 53%, 79%);
+}
+
+.perkCostCol {
+    flex: 1;
+    padding: .5rem;
+}
+.perkCostCol.desc {
+    flex: 2;
+}
+
+#rulesContainer {
+    width: calc(800px * var(--page-zoom));
+    min-height: 400px;
+    /*
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    padding: 0 1rem 0 1rem;
+    position: absolute;
+    top: calc(120px * var(--page-zoom));
+}
+
+#rulesContainer .tabSectionHeader {
+    text-transform:uppercase;
+    font-family: 'Luckiest Guy';
+    font-size:1.5rem;
+    margin: 1rem 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+}
+#rulesContainer .tabSectionHeader:after {
+    position: absolute;
+    
+    top: -.5rem;
+    left: -1rem;
+    right: 0;
+    bottom:0;
+    
+
+    transform: skewX(5deg) scale(1.2);
+    transform-origin: top left;
+    
+    z-index: -10;
+    content: ' ';
+    background: lightblue;
+    filter: drop-shadow(1px 1px 2px black);
+}
+
+#rulesContainer .tabSection {
+    font-size: 1.2rem;
+    
+    perspective: calc(1000px * var(--page-zoom));
+    position:relative;
+    padding: 3rem 1rem 1rem 1rem;
+    margin: 1rem 0 1rem 0;
+    font-family: 'Verdana';
+    filter: drop-shadow(1px 1px 2px black);
+}
+#rulesContainer .tabSection:after {
+    position:absolute;
+    inset: 0;
+    content: '';
+    z-index: -20;
+    transform: skewX(-2deg);
+    background: whitesmoke;
+}
+#rulesContainer .tabSection:nth-child(even):after {
+    transform: skewX(2deg);
+    background: red;
+    background: lightyellow;
+}
+
+#rulesContainer .newChange {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    background: rgba(0,150,0,.5);
+    content: 'NEW';
+    color: white;
+    font-weight: 800;
+    text-shadow: 1px 1px 8px black;
+}
+
+.ruleHighlight {
+    color: rgb(0,0,200);
+    font-weight:800;
+}
+.rhPerk {
+    color: rgb(0,120,0);
+    font-weight:800;
+}
+
+#pointsContainer {
+    width: calc(800px * var(--page-zoom));
+    min-height: 400px;
+    /*
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    padding: 0 1rem 0 1rem;
+    position: absolute;
+    top: calc(120px * var(--page-zoom));   
+}
+
+#points_iFrame {
+    transform-origin: top;
+    transform: scale(1.5);
+}
+
+#mapContainer {
+    width: 80dvw;
+    height: 80dvh;
+    min-width: calc(800px * var(--page-zoom));
+    margin: auto;
+    /*background-color: white;*/
+    position: absolute;
+    top: calc(120px * var(--page-zoom));
+    text-align:center;
+}
+
+#playerPointsChart {
+    margin: 1rem;
+}
+.pointsChartRow {
+    display: flex;
+    position: relative;
+    /*transform: translate(0, 30px);*/
+    box-shadow: 2px 2px 5px black;
+    border: 1px solid black;
+    min-height: 3rem;
+}
+.pointsChartRow > div {
+    flex: 1;
+    padding: 1rem;
+    /*background-color: white;*/
+
+    font-size: 2rem;
+    font-family: 'Luckiest Guy';
+    text-align: center;
+    min-height: 3.5rem;
+}
+
+.pointsChartRow > .playerStats {
+    background-color: white;
+    display: flex;
+}
+
+.playerStats > div {
+    flex: 1;
+    position: relative;
+}
+
+.pointsChartRow:first-child .playerStats > div:first-child:after {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    content:'Points';
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.pointsChartRow:first-child .playerStats > div:nth-child(2):after {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    content:'Leads';
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+
+.pointsChartRow:first-child .playerStats > div:nth-child(3):after {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    content:'Wins';
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.playerScore {
+    font-size: 2rem;
+} 
+.playerLeads {
+    font-size: 1.5rem;
+}
+.playerWins {
+    font-size: 1.5rem;
+}
+
+.pointsChartRow .playerName {
+    background: rgb(0,82,255);
+    background: linear-gradient(rgba(0,82,255,1) 0%, rgba(0,153,255,1) 48%, rgba(0,82,255,1) 100%);
+    text-shadow: 1px 1px 8px black;
+    color: white;
+    border-right: 1px solid black;
+}
+
+.playerName .perkIcon {
+    width: 3rem;
+    height: 3rem;
+    position:relative;
+    top: .5rem;
+    display: inline-block;
+    border: 1px solid gold;
+}
+
+.playerName .perkLvl {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 2.5rem;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px black;
+
+}
+
+/* Styling unique to gold/silver/bronze */
+/*
+.pointsChartRow:first-child {
+    transform-origin: 50% 0;
+    transform: scale(1.5);
+    z-index:3;
+}
+*/
+.pointsChartRow:first-child .playerName {
+    background-image: linear-gradient(#B78628, #FCC201, #B78628 )
+}
+/*
+.pointsChartRow:nth-child(2) {
+    transform-origin: 50% 0;
+    transform: scale(1.2) translate(0, 22px);
+    z-index: 2;
+}
+*/
+.pointsChartRow:nth-child(2) .playerName {
+    background-image: linear-gradient(#AEB2B8, #D7D7D8, #AEB2B8 )   
+}
+/*
+.pointsChartRow:nth-child(3) {
+    transform-origin: 50% 0;
+    transform: scale(1) translate(0, 34px);
+    z-index: 1;
+}
+*/
+.pointsChartRow:nth-child(3) .playerName {
+    background-image: linear-gradient(#6E3A06, #CD7F31, #6E3A06 )   
+}
+
+#teamWinsChart {
+    margin:-6rem auto auto auto;
+    width: calc(500px * var(--page-zoom));
+    height: calc(500px * var(--page-zoom));
+    font-size: 3.5rem;
+    font-family: 'Luckiest Guy';
+    /*background: white;
+    border: 1px solid black;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    */
+    background-image: url('./img/wins-pop.svg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    /* @keyframes duration | easing-function | delay |
+    iteration-count | direction | fill-mode | play-state | name */
+    /* @keyframes duration | easing-function | delay | name */
+    /*animation: 3s linear 1s slidein;*/
+
+    /*animation: bounceIn 1.5s both 1s;*/
+    animation: 1.5s linear 0.2s both bounceIn, 3s ease-in-out 1.5s infinite pulse;
+}
+
+@keyframes bounceIn {
+    0% {
+      transform: scale(0.1);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.winsChartLabel {
+    color: white;
+    filter: drop-shadow(1px 1px 2px black);
+}
+.winsChartCount {
+    color: lightblue;
+    filter: drop-shadow(1px 1px 2px black);
+}
+
+#recordsChart {
+    margin-top: 3rem;
+    margin: 3rem 5rem 0rem 5rem;
+    font-family: 'Luckiest Guy';   
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,0.5);
+}
+#recordsChart .recordsChartHeader {
+    display:flex;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+#recordsChart .headerLabel {
+    flex: 1;
+    background: white;
+    padding: .5rem;
+    border-right: 1px solid rgba(0,0,0,0.5);
+}
+#recordsChart .recordChartRow {
+    display:flex;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+
+
+#recordsChart .recordCol {
+    flex: 1;
+    background: white;
+    padding: .4rem;
+    border-right: 1px solid rgba(0,0,0,0.5);
 }

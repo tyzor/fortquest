@@ -1,45 +1,165 @@
-const mapOrigX = 780;
-const mapOrigY = 843;
+document.body.onload = () => {
 
-document.body.onload = function () {
-    console.log('loaded')
+    // hookup menu
+    let buttons = document.getElementById("menubar").querySelectorAll(".button");
 
-    let targetEl = document.querySelector('#target');
-    let rollBtn = document.querySelector('#rollButton');
-    targetEl.style.opacity = 0
+    buttons.forEach(button => {
+        console.log(button);
+        button.onclick = el => {
+            onClickTab(el.target.getAttribute("data-tab"));
+        };
+    })
 
-    rollBtn.onclick = (evt) => {
-        setNewTarget(targetEl)
-    }
+    // perk tree selection
+    /*
+    let perkButtons = document.getElementById("perkTreeMenu").querySelectorAll(".button");
+    perkButtons.forEach(button => {
+        console.log(button);
+        button.onclick = el => {
+            onClickPerkTree(el.target.getAttribute("data-tab"));
+        };
+    })
+    */
+
+    // make rules active
+    let ruleButton = Array.from(buttons).find(button => {
+        return button.dataset.tab == 'rules'
+    });
+    ruleButton.click();
+
+    // load points
+    loadPointsSheet(document.getElementById("pointsContainer"));
+
 }
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function onClickTab(id) {
+
+    console.log(`Clicked ${id}`);
+
+    let buttons = Array.from(document.getElementById("menubar").querySelectorAll(".button"));
+    let tabs = Array.from(document.querySelectorAll(".tabContainer"));
+
+    let elements = buttons.concat(tabs);
+
+    elements.forEach( el => {
+        if(el.getAttribute("data-tab") != id)
+        {
+            el.classList.remove("active");
+        } else
+            el.classList.add("active");
+    })
+
 }
 
-function setNewTarget(targetEl)
+function onClickPerkTree(id)
 {
-    let x = getRandomInt(100,mapOrigX-100)
-    let y = getRandomInt(100,mapOrigY-100)
-    let pos = getScaledCoords(x,y)
-    
-    let props = window.getComputedStyle(targetEl, null)
-    let tw = parseInt(props.width)
-    let th = parseInt(props.height)
+    console.log(`Clicked ${id}`);
 
-    targetEl.style.left = Math.floor(pos.x - tw/2) + 'px'
-    targetEl.style.top = Math.floor(pos.y - th/2) + 'px'
-    targetEl.style.opacity = 0.8
+    let buttons = Array.from(document.getElementById("perkTreeMenu").querySelectorAll(".button"));
+    let tabs = Array.from(document.querySelectorAll(".perkTreeRootContainer"));
+
+    let elements = buttons.concat(tabs);
+
+    elements.forEach( el => {
+        if(el.getAttribute("data-tab") != id)
+        {
+            el.classList.remove("active");
+        } else
+            el.classList.add("active");
+    })   
 }
 
-function getScaledCoords(x,y) {
+// Instead of embedding we can pull sheet data
+async function loadPointsSheet(container) {
+    //let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMpwEditt1W2w-wOk9SoqpK_uOZ01ARoO_ATg98hnUk2g2fEKc_JHtaP651S-m_K-9P8nznyqzoS0q/pub?gid=1028857396&single=true&output=csv"
+    //let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQk61PfOFcU4eWhNnJKeAEnOtNpm96p_stpe4er01Wn9Te0FbNXb4a98No4-6O-QsrI8kOu4vO5fRYe/pub?gid=1028857396&single=true&output=csv"
+    let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfooLRZBfiVGuxQxK6BVFbhk36-VUqdfOyhyM0AERZ33vize_AIOjecBlbIHKmJ3pa25gwSFO3Vth0/pub?gid=1028857396&single=true&output=csv"
+    let response = await fetch(url);
+    let pointsText = await response.text();
+    // Get an array of each line
+    let pointsLines = pointsText.match(/[^\r\n]+/g);
+    // First line is players
+    let players = pointsLines[0].split(',');
+    // Second line is scores
+    let scores = pointsLines[1].split(',');
 
-    let mapEl = document.querySelector('#map')
-    let xRatio = mapEl.width / mapOrigX;
-    let yRatio = mapEl.height / mapOrigY;
+    // 10th line is number of leads
+    let playerLeads = pointsLines[9].split(',');
+    // 14th line is number of lead wins
+    let playerWins = pointsLines[13].split(',');
     
-    return {x: x*xRatio, y: y*yRatio}
+    // Lets assemble our data
+    let playerData = [];
+    players.forEach( (player,index) => {
+        playerData.push({
+            name: player,
+            score: scores[index],
+            leads: playerLeads[index],
+            wins: playerWins[index],
+        })
+    })
+    // Sort from first to last place
+    playerData.sort( (a,b) => b.score-a.score );
+
+    // Create the element
+    let pointEl = document.createElement('div');
+    pointEl.id = 'playerPointsChart';
+    playerData.forEach(player => {
+        pointEl.innerHTML += `
+            <div class='pointsChartRow'>
+                <div class='playerName'>${player.name}</div>
+                <div class='playerStats'>
+                    <div class='playerScore'>${player.score}</div>
+                    <div class='playerLeads'>${player.leads}</div>
+                    <div class='playerWins'>${player.wins}</div>
+                </div>
+            </div>
+        `;
+    })
+    container.replaceChildren(pointEl);
+
+    // Line 18/19/20 is records
+    let records = []
+    for(let i=0;i<3;i++)
+    {
+        let line = pointsLines[17+i].split(',');
+        records.push({
+            label: line[0],
+            season: line[1],
+            all: line[2]
+        })
+    }
+    let recordsChart = document.createElement('div');
+    recordsChart.id = 'recordsChart';
+    recordsChart.innerHTML = `
+        <div class='recordsChartHeader'>
+            <div class='headerLabel'></div>
+            <div class='headerLabel'>Season</div>
+            <div class='headerLabel'>All-Time</div>
+        </div>
+    `;
+    records.forEach(rec => {
+        let recRow = document.createElement('div');
+        recRow.classList.add('recordChartRow');
+        recRow.innerHTML = `
+            <div class='recordCol rowLabel'>${rec.label}</div>
+            <div class='recordCol'>${rec.season}</div>
+            <div class='recordCol'>${rec.all}</div>
+        `
+        recordsChart.appendChild(recRow);
+    });
+    container.appendChild(recordsChart);
+
+    // 4/5th line is team wins
+    let winLabel = pointsLines[4].split(',')[0]
+    let winCount = parseInt(pointsLines[5].split(',')[0])
+
+    let winsEl = document.createElement('div');
+    winsEl.id = 'teamWinsChart';
+    winsEl.innerHTML = `
+        <div class='winsChartLabel'>${winLabel}</div>
+        <div class='winsChartCount'>${winCount}</div>
+    `
+    container.appendChild(winsEl);   
 
 }
